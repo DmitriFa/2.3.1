@@ -2,26 +2,17 @@ package jm.task.core.jdbc.util;
 
 import jm.task.core.jdbc.model.User;
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.cfg.Settings;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
-import javax.activation.DataSource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Objects;
-
-import static javax.persistence.Persistence.createEntityManagerFactory;
 
 public class Util {
     private static final String url = "jdbc:mysql://localhost:3306/user?serverTimezone=UTC";
@@ -54,8 +45,7 @@ public class Util {
         return null;
     }
     @Autowired
-   // @PersistenceContext
-  EntityManagerFactory emf = createEntityManagerFactory("jm.task.core.jdbc");
+    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("jm.task.core.jdbc");
     public EntityManager em = emf.createEntityManager();
 
 

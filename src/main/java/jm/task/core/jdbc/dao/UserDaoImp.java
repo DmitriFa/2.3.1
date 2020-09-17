@@ -5,14 +5,8 @@ import jm.task.core.jdbc.util.Util;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -57,9 +51,12 @@ public class UserDaoImp implements UserDao{
             session.close();
         }
     }
+
     @Override
     public void addUser(User user) throws HibernateException {
-   new Util().em. persist(user);
+    Util util= new Util();
+            util.em.persist(user);
+            util.em.getTransaction().commit();
     }
 
     @Override
