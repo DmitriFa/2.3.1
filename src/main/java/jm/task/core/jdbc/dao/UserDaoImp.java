@@ -7,8 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
 import java.sql.SQLException;
 import java.util.List;
+
+import static jm.task.core.jdbc.util.Util.emf;
 
 @Repository
 public class UserDaoImp implements UserDao{
@@ -54,9 +57,9 @@ public class UserDaoImp implements UserDao{
 
     @Override
     public void addUser(User user) throws HibernateException {
-    Util util= new Util();
-            util.em.persist(user);
-            util.em.getTransaction().commit();
+       EntityManager em = emf.createEntityManager();
+          em.persist(user);
+        // em.getTransaction().commit();
     }
 
     @Override

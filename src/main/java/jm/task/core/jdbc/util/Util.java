@@ -7,7 +7,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
@@ -48,10 +47,11 @@ public class Util {
    // ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/META-INF/db.properties");
      //prop.load(context.getClassLoader().getResourceAsStream("db.properties"));
     // ResourceBundle rb = ResourceBundle.getBundle("db.properties");
+
     @Autowired
     @PersistenceContext
-    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("src/main/resources/META-INF/db.properties");
-    public EntityManager em = emf.createEntityManager();
+    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("jm.task.core.jdbc");
+
 
 
 
