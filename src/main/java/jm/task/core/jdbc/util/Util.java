@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -44,8 +45,12 @@ public class Util {
 
         return null;
     }
+   // ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/META-INF/db.properties");
+     //prop.load(context.getClassLoader().getResourceAsStream("db.properties"));
+    // ResourceBundle rb = ResourceBundle.getBundle("db.properties");
     @Autowired
-    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("jm.task.core.jdbc");
+    @PersistenceContext
+    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("src/main/resources/META-INF/db.properties");
     public EntityManager em = emf.createEntityManager();
 
 
