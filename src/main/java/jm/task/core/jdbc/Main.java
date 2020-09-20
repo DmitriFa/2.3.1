@@ -35,7 +35,7 @@ public class Main {
         UserDaoImp userDao = new UserDaoImp();
         // userDao.dropUsersTable();
         //  userDao.createUsersTable();
-      User user = new User("Вадим", "Анцупов", (byte) 38);
+      User user = new User("Даннил", "Гранин", (byte) 38);
       userDao.addUser(user);
        //  userDao.saveUser("Василий", "Быков", (byte) 35);
        // userDao.saveUser("Дмитрий", "Фадеев", (byte) 17);

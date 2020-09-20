@@ -1,6 +1,7 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
+import org.springframework.transaction.TransactionDefinition;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,7 +10,7 @@ public interface UserDao {
 
     void createUsersTable() throws SQLException;
 
-    void dropUsersTable() throws SQLException;
+    TransactionDefinition dropUsersTable() throws SQLException;
 
     void addUser(User user) throws SQLException, Exception;
 

@@ -1,23 +1,28 @@
 package jm.task.core.jdbc.dao;
 
+import config.HibernateConfig;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.TransactionDefinition;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.sql.SQLException;
 import java.util.List;
 
-import static jm.task.core.jdbc.util.Util.emf;
+import static javax.persistence.Persistence.createEntityManagerFactory;
 
 @Repository
 public class UserDaoImp implements UserDao{
     public UserDaoImp() {
-
     }
+    @Autowired
+    private HibernateConfig hc;
 
     @Override
     public void createUsersTable() throws SQLException {
@@ -40,7 +45,7 @@ public class UserDaoImp implements UserDao{
         }
     }
     @Override
-    public void dropUsersTable() throws SQLException {
+    public TransactionDefinition dropUsersTable() throws SQLException {
         String sql = "DROP TABLE userex";
         Session session = Util.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
@@ -53,13 +58,21 @@ public class UserDaoImp implements UserDao{
         } finally {
             session.close();
         }
+        return null;
     }
 
     @Override
-    public void addUser(User user) throws HibernateException {
+    public void addUser(User user) throws HibernateException, SQLException {
+         System.out.println(user.toString());
+        EntityManagerFactory emf = createEntityManagerFactory("jm.task.core.jdbc");
        EntityManager em = emf.createEntityManager();
-          em.persist(user);
-        // em.getTransaction().commit();
+      //  EntityManagerFactory emf = hc.getEntityManagerFactoryBean().getObject();
+      //  EntityManager em = emf.createEntityManager();
+        //new HibernateConfig().getEntityManagerFactoryBean();
+         em.getTransaction().begin();
+         em.persist(user);
+         em.flush();
+
     }
 
     @Override

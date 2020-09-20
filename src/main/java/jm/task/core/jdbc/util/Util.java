@@ -5,11 +5,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -48,13 +44,6 @@ public class Util {
      //prop.load(context.getClassLoader().getResourceAsStream("db.properties"));
     // ResourceBundle rb = ResourceBundle.getBundle("db.properties");
 
-    @Autowired
-    @PersistenceContext
-    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("jm.task.core.jdbc");
-
-
-
-
     // @PersistenceContext
    // public static EntityManager em ;
     // org.hibernate.Session session = (Session) em.getDelegate();
@@ -88,6 +77,7 @@ public class Util {
                 .addAnnotatedClass(User.class);
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
         return  configuration.buildSessionFactory(builder.build());
+        //return configuration.getProperties().
         // return configuration.buildSettings()
 
     }
