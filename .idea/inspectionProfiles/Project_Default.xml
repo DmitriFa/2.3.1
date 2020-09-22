@@ -5,6 +5,7 @@
     <inspection_tool class="JpaDomInspection" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="SpringConfigurationProxyMethods" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="SpringHandlersSchemasHighlighting" enabled="true" level="TYPO" enabled_by_default="true" />
+    <inspection_tool class="SpringJavaInjectionPointsAutowiringInspection" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="UnparsedCustomBeanInspection" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="UtilSchemaInspection" enabled="true" level="TYPO" enabled_by_default="true" />
   </profile>

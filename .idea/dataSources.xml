@@ -20,5 +20,25 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/user?serverTimezone=UTC</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="jm.task.core.jdbc/Hibernate" uuid="6235d4a8-094b-48cd-af76-b303b02006ff">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+/Users/lipsuke/Downloads/2.3.1 spring mvc hibernate/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/user?serverTimezone=UTC</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="db" uuid="4cf46fcb-6ad5-4e9e-9e00-af5817334cff">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>jdbc.properties
+
+/Users/lipsuke/Downloads/2.3.1 spring mvc hibernate/src/main/resources/META-INF/db.properties</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/user?serverTimezone=UTC</jdbc-url>
+    </data-source>
   </component>
 </project>
