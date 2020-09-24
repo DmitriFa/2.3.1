@@ -1,6 +1,7 @@
 package config;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -20,6 +21,13 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource(value = "classpath:db.properties")
 public class HibernateConfig {
+
+    private final ApplicationContext applicationContext;
+
+
+    public HibernateConfig(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
     private Environment environment;
     @Autowired
